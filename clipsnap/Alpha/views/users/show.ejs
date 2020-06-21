@@ -1,0 +1,41 @@
+<%- include('../partials/header') %>
+
+<div class="row">
+	<div class="col-md-4">
+			<h1><%= user.firstName + " " + user.lastName %></h1>
+		<div class="thumbnail">
+			<img src="<%= user.avatar %>" alt="user profile image">
+			<br>
+			<div class="caption"><a href="mailto:<%= user.email %>"><%= user.email %></a></div>
+			<br>
+			<a href="/follow/<%= user.id %>"><button class="btn btn-primary">Follow <%= user.username %></button></a>
+		</div>
+		<hr>
+		
+		
+		<% if(user._id== "5eca186ab1f9c3168d2939cd"){%>
+			<div>
+				<h3>
+					Description
+				</h3>
+				
+				<p>
+					Developer of  <em> <svg id="nav-icon" class="bi bi-image-alt" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+  					<path d="M10.648 6.646a.5.5 0 01.577-.093l4.777 3.947V15a1 1 0 01-1 1h-14a1 1 0 01-1-1v-2l3.646-4.354a.5.5 0 01.63-.062l2.66 2.773 3.71-4.71z"/>
+  						<path fill-rule="evenodd" d="M4.5 5a2.5 2.5 0 100-5 2.5 2.5 0 000 5z" clip-rule="evenodd"/>
+				</svg> ClipSnap</em>
+				</p>
+				
+			</div>
+		<%}%>
+	</div>
+	<div class="col-md-8">
+		<h3><%= user.username %>'s Snaps:</h3>
+		<ul>
+		<% campgrounds.forEach(function(campground) { %>
+			<li><a href="/campgrounds/<%= campground.id %>"><%= campground.name %></a></li>
+		<% }); %>
+		</ul>
+	</div>
+</div>
+<%- include('../partials/footer') %>
