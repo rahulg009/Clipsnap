@@ -21,7 +21,7 @@ var commentRoutes    = require("./routes/comments"),
     indexRoutes      = require("./routes/index")
     
 
-mongoose.connect(process.env.MONGODB_URL,
+mongoose.connect('mongodb+srv://rgtech:KtuWP5YbG2MUNpdl@cluster0.tuitl.mongodb.net/clipsnap?retryWrites=true&w=majority',
 {
   useNewUrlParser: true, 
   useUnifiedTopology: true,
