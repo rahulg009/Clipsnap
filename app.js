@@ -21,7 +21,7 @@ var commentRoutes    = require("./routes/comments"),
     indexRoutes      = require("./routes/index")
     
 
-mongoose.connect('mongodb+srv://rgtech:KtuWP5YbG2MUNpdl@cluster0.tuitl.mongodb.net/clipsnap?retryWrites=true&w=majority',
+mongoose.connect(process.env.MONGODB_URL,
 {
   useNewUrlParser: true, 
   useUnifiedTopology: true,
@@ -81,7 +81,8 @@ app.use("/campgrounds/:id/comments", commentRoutes);
 
 
 
-app.listen(process.env.PORT, process.env.IP, function(){
-   console.log("rg_running");
-});
+// app.listen(process.env.PORT, process.env.IP, function(){
+//    console.log("rg_running");
+// });
 
+app.listen(3000)
