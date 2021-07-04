@@ -20,8 +20,13 @@ var commentRoutes    = require("./routes/comments"),
     campgroundRoutes = require("./routes/campgrounds"),
     indexRoutes      = require("./routes/index")
     
-// mongoose.connect('mongodb://localhost:27017/yelp_camp_v4', {useNewUrlParser: true, useUnifiedTopology: true});
-mongoose.connect('mongodb+srv://rgtech:KtuWP5YbG2MUNpdl@cluster0.tuitl.mongodb.net/clipsnap?retryWrites=true&w=majority',{useNewUrlParser: true, useUnifiedTopology: true});
+
+mongoose.connect(process.env.MONGODB_URL,
+{
+  useNewUrlParser: true, 
+  useUnifiedTopology: true,
+
+});
 app.use(bodyParser.urlencoded({extended: true}));
 app.set("view engine", "ejs");
 app.use(express.static(__dirname + "/public"));
@@ -32,7 +37,7 @@ app.locals.moment = require('moment');
 
 // PASSPORT CONFIGURATION
 app.use(require("express-session")({
-    secret: "pikachu!",
+    secret: process.env.SECRET,
     resave: false,
     saveUninitialized: false
 }));
